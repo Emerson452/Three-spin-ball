@@ -1,5 +1,6 @@
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import gsap from 'gsap';
 const scene = new THREE.Scene();
 
 //Sphere
@@ -67,3 +68,7 @@ const loop = () => {
   window.requestAnimationFrame(loop)
 }
 loop()
+
+//Timeline magic
+const tl = gsap.timeline({ default: {duration: 1} })//synchroniser plusieurs animations ensemble
+tl.fromTo(mesh.scale, { z:0, x:0, y:0 }, { z: 1, x: 1, y: 1 })//animer quelque chose d'une position à une autre (la c'est une animation de mesh scale)
